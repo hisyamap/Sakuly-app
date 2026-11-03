@@ -1,18 +1,42 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useColorScheme } from 'react-native';
+import SplashScreen from "@/components/SplashScreen";
+import { useDataStore } from "@/store/useDataStore";
+import { Stack } from "expo-router";
+import { useEffect, useState } from "react";
+import { PaperProvider } from "react-native-paper";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { colors } from "../styles/global";
 
-import { AnimatedSplashOverlay } from '@/components/animated-icon';
-import AppTabs from '@/components/app-tabs';
+export default function RootLayout() {
+  const [isLoading, setIsLoading] = useState(true);
 
-SplashScreen.preventAutoHideAsync();
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1800);
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    useDataStore.getState().load();
+  }, []);
+
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <AnimatedSplashOverlay />
-      <AppTabs />
-    </ThemeProvider>
+    <SafeAreaProvider>
+      <PaperProvider>
+        <SafeAreaView
+          style={{ flex: 1, backgroundColor: colors.background }}
+          edges={['top']}
+        >
+          {isLoading ? (
+            <SplashScreen />
+          ) : (
+            <Stack screenOptions={{ headerShown: false }}>
+              <Stack.Screen name='(tabs)' />
+            </Stack>
+          )}
+        </SafeAreaView>
+      </PaperProvider>
+    </SafeAreaProvider>
   );
 }
