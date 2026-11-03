@@ -1,8 +1,11 @@
 import { MaterialDesignIcons } from "@react-native-vector-icons/material-design-icons";
 import { Tabs } from "expo-router";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { colors } from "../../styles/global";
 
 export default function RootLayout() {
+  const insets = useSafeAreaInsets();
+  
   return (
     <Tabs
       screenOptions={{
@@ -10,6 +13,7 @@ export default function RootLayout() {
         tabBarStyle: {
           backgroundColor: colors.header,
           borderTopColor: colors.surface,
+          height: 60 + insets.bottom
         },
         tabBarActiveTintColor: colors.primary,
         tabBarInactiveTintColor: colors.textSecondary,
