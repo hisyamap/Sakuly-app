@@ -2,12 +2,12 @@
 
 A simple personal budget tracker built with React Native and Expo. Track your income and expenses, see how much of your budget is left each month, and set up recurring income that updates automatically.
 
-<p>
-  <img src="assets/images/screenshots/home.jpeg" width="250" alt="Home screen" />
-  <img src="assets/images/screenshots/expense.jpeg" width="250" alt="Add expense" />
-  <img src="assets/images/screenshots/income.jpeg" width="250" alt="Add income" />
-  <img src="assets/images/screenshots/history.jpeg" width="250" alt="History" />
-</p>
+<div align="center">
+  <img src="assets/images/screenshots/home.jpeg" width="150" alt="Home screen" />
+  <img src="assets/images/screenshots/expense.jpeg" width="150" alt="Add expense" />
+  <img src="assets/images/screenshots/income.jpeg" width="150" alt="Add income" />
+  <img src="assets/images/screenshots/history.jpeg" width="150" alt="History" />
+</div>
 
 ## Features
 
